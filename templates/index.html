@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TrackMyDNS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track a DNS propogation.">
+    <meta name="author" content="Damian Myerscough and Diana Widjaja">
+
+    <link href="{{ STATIC_URL }}style.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="{{ STATIC_URL }}map.js"></script>
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.png">
+  </head>
+
+  <body onload="initialize()">
+    <div class="navbar-wrapper">
+      
+      <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+
+          </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
+    </div><!-- /.navbar-wrapper -->
+    <div id="mybanner" class="banner slide">
+      <div class="banner-inner">
+		<div class="container">
+            <div class="banner-caption">
+              <h1>TrackMyDNS</h1>
+              <p class="lead">Updated your DNS records? Track your DNS propagation.</p>
+
+            </div>
+          </div>
+        
+      </div>
+    </div><!-- /.highlight -->
+    <div class="container marketing">
+      <!-- Three columns of text below the banner -->
+      <div class="row">
+        <div class="span4">
+          <form class="form-inline">
+          {% csrf_token %}
+          <div class="control-group">
+          	<div class="control">
+          		<div class="input-prepend input-append">
+          			<span class="add-on"><i class="icon-globe"></i></span>
+          			<input class="span2" id="inputIcon" type="text" placeholder="www.yourdomain.com">
+					    <select> 
+					      <option>AAAA</option>
+					      <option>CNAME</option>
+					      <option>MX</option>
+					      <option>NS</option>
+					      <option>PTR</option>
+					      <option>SOA</option>
+					      <option>TXT</option>
+					    </select> 
+					    <a class="btn" href="#">Track It &raquo;</a>
+          		</div>
+          	</div>
+          </div>
+          
+         			
+          </form>
+          
+          <ul>
+          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/Australia.png"> Australia</li>
+          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/Brazil.png"> Brazil</li>
+          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/Canada.png"> Canada</li>
+          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/China.png"> China</li>
+          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/UK.png"> England</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/France.png"> France</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/Germany.png"> Germany</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/Italy.png"> Italy</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/Japan.png"> Japan</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/Malaysia.png"> Malaysia</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/New-Zealand.png"> New Zealand</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/Russia.png"> Russia</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/South-Africa.png"> South Africa</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/Sweden.png"> Sweden</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/Turkey.png"> Turkey</li>
+          	<li><img src="{{ STATIC_URL }}img/flags/USA.png"> USA</li>
+          </ul>
+        
+          	
+         
+          </form>
+        </div><!-- /.span4 -->
+        <div class="span8">
+         <div id="map-canvas"></div>
+          
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+
+
+     
+      <div class="featurette">
+        <h2 class="featurette-heading">DNS Propagation</h2>
+        <p class="lead">If it has been more than 48 hours since you updated your DNS records and you're still not getting available DNS records, 
+        	please verify the configuration of your website. </p>
+      </div>
+
+      <hr class="featurette-divider">
+
+
+    </div><!-- /.container -->
+	<!-- FOOTER -->
+      <footer>
+        <p class="pull-right"></p>
+        <p>&copy; 2013 TrackMyDNS.com</p>
+      </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+ 
+ 
+  </body>
+</html>
