@@ -9,7 +9,7 @@ class DNS(models.Model):
     country = models.ForeignKey('Countries')
     latitude = models.CharField(max_length=25)
     longitude = models.CharField(max_length=25)
-    responsetime = models.DecimalField(max_digits=10, decimal_places=2)
+    responsetime = models.DecimalField(max_digits=15, decimal_places=10)
     available = models.BooleanField()
     malicious = models.BooleanField()
     reason = models.CharField(max_length=35)
