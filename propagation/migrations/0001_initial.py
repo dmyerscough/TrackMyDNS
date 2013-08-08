@@ -17,7 +17,7 @@ class Migration(SchemaMigration):
             ('country', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['propagation.Countries'])),
             ('latitude', self.gf('django.db.models.fields.CharField')(max_length=25)),
             ('longitude', self.gf('django.db.models.fields.CharField')(max_length=25)),
-            ('responsetime', self.gf('django.db.models.fields.DecimalField')(max_digits=10, decimal_places=2)),
+            ('responsetime', self.gf('django.db.models.fields.DecimalField')(max_digits=15, decimal_places=10)),
             ('available', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('malicious', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('reason', self.gf('django.db.models.fields.CharField')(max_length=35)),
@@ -61,7 +61,7 @@ class Migration(SchemaMigration):
             'malicious': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'org': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'reason': ('django.db.models.fields.CharField', [], {'max_length': '35'}),
-            'responsetime': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'}),
+            'responsetime': ('django.db.models.fields.DecimalField', [], {'max_digits': '15', 'decimal_places': '10'}),
             'unavailable_count': ('django.db.models.fields.IntegerField', [], {})
         }
     }

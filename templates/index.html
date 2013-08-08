@@ -1,48 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>TrackMyDNS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Track a DNS propogation.">
-    <meta name="author" content="Damian Myerscough and Diana Widjaja">
+{% extends "base.html" %}
 
-    <link href="{{ STATIC_URL }}style.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script src="{{ STATIC_URL }}map.js"></script>
-
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.png">
-  </head>
-
-  <body onload="initialize()">
-    <div class="navbar-wrapper">
-      
-      <div class="navbar navbar-inverse">
-          <div class="navbar-inner">
-
-          </div><!-- /.navbar-inner -->
-        </div><!-- /.navbar -->
-    </div><!-- /.navbar-wrapper -->
-    <div id="mybanner" class="banner slide">
-      <div class="banner-inner">
-		<div class="container">
-            <div class="banner-caption">
-              <h1>TrackMyDNS</h1>
-              <p class="lead">Updated your DNS records? Track your DNS propagation.</p>
-
-            </div>
-          </div>
-        
-      </div>
-    </div><!-- /.highlight -->
+{% block content %}
     <div class="container marketing">
       <!-- Three columns of text below the banner -->
       <div class="row">
@@ -99,27 +57,4 @@
           
         </div><!-- /.span4 -->
       </div><!-- /.row -->
-
-
-     
-      <div class="featurette">
-        <h2 class="featurette-heading">DNS Propagation</h2>
-        <p class="lead">If it has been more than 48 hours since you updated your DNS records and you're still not getting available DNS records, 
-        	please verify the configuration of your website. </p>
-      </div>
-
-      <hr class="featurette-divider">
-
-
-    </div><!-- /.container -->
-	<!-- FOOTER -->
-      <footer>
-        <p class="pull-right"></p>
-        <p>&copy; 2013 TrackMyDNS.com</p>
-      </footer>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
- 
- 
-  </body>
-</html>
+{% endblock %}
