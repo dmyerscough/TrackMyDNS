@@ -7,7 +7,7 @@ var markers = {
 	{
 		'status':'/static/img/offline.png',
 		'city': 'Sydney, Australia',
-		'location': [-33.52, 151.13]
+		'location': [-33.86, 151.13]
 	},
 	{
 		'status':'/static/img/offline.png',
@@ -26,14 +26,80 @@ var markers = {
 	},
 	{
 		'status':'/static/img/offline.png',
-		'city': 'Seattle, WA, USA',
-		'location': [47.37, -122.2]
+		'city': 'London, England, UK',
+		'location': [51.51, -0.11]
 	},
-	{
-		'status':'/static/img/offline.png',
-		'city': 'New York, NY, USA',
-		'location': [40.40, -73.56]
-	},
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Paris, France',
+                'location': [48.85, 2.35]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Munich, Germany',
+                'location': [48.13, 11.57]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Rome, Italy',
+                'location': [41.89, 12.48]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Tokyo, Japan',
+                'location': [35.68, 139.69]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Kuala Lumpur, Malaysia',
+                'location': [3.13, 101.68]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Aukland, New Zealand',
+                'location': [-36.84, 174.76]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Mosco, Russia',
+                'location': [55.75, 37.61]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Cape Town, South Africa',
+                'location': [-33.92, 18.42]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Stockholm, Sweden',
+                'location': [59.32, 18.06]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Istanbul, Turkey',
+                'location': [41.00, 28.97]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Herndon, VA, USA',
+                'location': [38.96, -77.38]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Mount View, CA, USA',
+                'location': [37.38, -122.03]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'New York, NY, USA',
+                'location': [40.40, -73.56]
+        },
+        {
+                'status':'/static/img/offline.png',
+                'city': 'Seattle, WA, USA',
+                'location': [47.37, -122.2]
+        },
+
 	
 	]
 };
