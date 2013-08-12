@@ -1,12 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div id="mybanner" class="banner slide">
+      <div class="banner-inner">
+       
+		<div class="container">
+            <div class="banner-caption">
+              <h1>TrackMyDNS</h1>
+              <p class="lead">Updated your DNS records? Track your DNS propagation.</p>
+
+            </div>
+          </div>
+        
+      </div>
+    </div><!-- /.highlight -->
+
+
     <div class="container marketing">
+
       <!-- Three columns of text below the banner -->
       <div class="row">
         <div class="span4">
+          
           <form class="form-inline">
-          {% csrf_token %}
           <div class="control-group">
           	<div class="control">
           		<div class="input-prepend input-append">
@@ -21,7 +37,7 @@
 					      <option>SOA</option>
 					      <option>TXT</option>
 					    </select> 
-					    <a class="btn" href="#">Track It &raquo;</a>
+					    <a id="track" class="btn" href="#">Track It &raquo;</a>
           		</div>
           	</div>
           </div>
@@ -29,23 +45,23 @@
          			
           </form>
           
-          <ul>
-          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/Australia.png"> Australia</li>
-          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/Brazil.png"> Brazil</li>
-          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/Canada.png"> Canada</li>
-          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/China.png"> China</li>
-          	<li class="ok"><img src="{{ STATIC_URL }}img/flags/UK.png"> England</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/France.png"> France</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/Germany.png"> Germany</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/Italy.png"> Italy</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/Japan.png"> Japan</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/Malaysia.png"> Malaysia</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/New-Zealand.png"> New Zealand</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/Russia.png"> Russia</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/South-Africa.png"> South Africa</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/Sweden.png"> Sweden</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/Turkey.png"> Turkey</li>
-          	<li><img src="{{ STATIC_URL }}img/flags/USA.png"> USA</li>
+          <ul id="flags">
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Australia.png"> Australia <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Brazil.png"> Brazil <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Canada.png"> Canada <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/China.png"> China <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/UK.png"> England <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/France.png"> France <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Germany.png"> Germany <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Italy.png"> Italy <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Japan.png"> Japan <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Malaysia.png"> Malaysia <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/New-Zealand.png"> New Zealand <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Russia.png"> Russia <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/South-Africa.png"> South Africa <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Sweden.png"> Sweden <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/Turkey.png"> Turkey <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
+          	<li class="pending"><img src="{{ STATIC_URL }}img/flags/USA.png"> USA <span class="spin"><i class="icon-spinner icon-spin icon-large"></i></span></li>
           </ul>
         
           	

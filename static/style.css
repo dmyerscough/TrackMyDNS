@@ -11,7 +11,7 @@
     }
 	
 	footer {
-		background: url(/static/img/plaid-bg.gif);
+		background: url(img/plaid-bg.gif);
 		height: 200px;
 		border-top: 5px solid #1f1f1f;
 	}
@@ -192,6 +192,14 @@
 		background: url(/static/img/ok.png) center right no-repeat;
 	}
 	
+	.span4 .fail {
+		background: url(/static/img/fail.png) center right no-repeat;
+	}
+	
+	.span4 .pending {
+		background: url(/static/img/pending.png) center right no-repeat;
+	}
+	
 	ul li img {
 		width: 16px;
 		height: 16px;
@@ -237,7 +245,8 @@
       letter-spacing: -1px;
     }
 
-
+.spin {display:none; clear:right;}
+.spin .icon-spinner {font-size: 11px; color: #333; float: right;}
 
     /* RESPONSIVE CSS
     -------------------------------------------------- */
