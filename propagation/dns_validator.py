@@ -12,6 +12,8 @@ if __name__ == '__main__':
     countries = ['AUS', 'BRA', 'CAN', 'CHN', 'FRA', 'GBR', 'GER', 'ITA',
                  'JPN', 'MAS', 'NZL', 'RSA', 'RUS', 'SWE', 'TUR', 'USA']
 
+    YAHOO_IP = ['206.190.36.45', '98.138.253.109', '98.139.183.24']
+
     urlparse.uses_netloc.append("postgres")
     url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
@@ -39,7 +41,7 @@ if __name__ == '__main__':
             try:
                 answer = res.query('yahoo.com', 'A')
 
-                if '206.190.36.45' or '98.138.253.109' or '98.139.183.24' == answer[0].address:
+                if answer[0].address in YAHOO_IP:
                     pass
                 else:
                     update.execute("UPDATE propagation_dns SET reason = '{0}', Available = False, malicious = True WHERE id = '{1}'".format('Resolved domain incorrectly', ns[0]))
