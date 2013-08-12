@@ -143,7 +143,7 @@ $(function()
 
 				$.ajax({
 					type: "GET",
-					url: "servers.json",
+					url: "/static/servers.json",
 					dataType: "json",
 					//data: dataString,
 					//cache: false,
@@ -163,11 +163,9 @@ $(function()
 					success: function(data) {
 						$.each(data.servers, function(j, server){
 							if (server.status=='img/online.png') {
-								console.log("ok: " + j);
 								$($checks[j]).addClass("ok").show("slow");
 							}
 							else {
-								console.log("fail: " + j);
 								$($checks[j]).addClass("fail").show("slow");
 							}
 							$($('span[class="spin"]')[j]).text("");
