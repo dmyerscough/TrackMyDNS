@@ -2,7 +2,9 @@
 
 import dns.resolver
 import psycopg2
+import urlparse
 import time
+import os
 
 
 if __name__ == '__main__':
@@ -10,7 +12,14 @@ if __name__ == '__main__':
     countries = ['AUS', 'BRA', 'CAN', 'CHN', 'FRA', 'GBR', 'GER', 'ITA',
                  'JPN', 'MAS', 'NZL', 'RSA', 'RUS', 'SWE', 'TUR', 'USA']
 
-    conn = psycopg2.connect("dbname=trackmydns user=damian password=s4fem0de host=172.16.105.141")
+    urlparse.uses_netloc.append("postgres")
+    url = urlparse.urlparse(os.environ["DATABASE_URL"])
+
+    conn = psycopg2.connect(database=url.path[1:],
+                            user=url.username,
+                            password=url.password,
+                            host=url.hostname,
+                            port=url.port)
     cur = conn.cursor()
     update = conn.cursor()
 
