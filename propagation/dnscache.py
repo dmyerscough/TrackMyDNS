@@ -2,6 +2,7 @@
 
 import dns.resolver
 import pylibmc
+import json
 
 __author__ = 'Damian Myerscough'
 __email__ = 'Damian.Myerscough@gmail.com'
@@ -26,6 +27,9 @@ class TrackMyDNS:
 
     >>> MyDNS.dump_cache('example.com', 'A')
     {'example.com': {'A': {'8.8.8.8': ['93.184.216.119']}}}
+    
+    >>> MyDNS.query(DOMAIN, RecordType, '62.181.119.131', fmt='json')
+    {"SERVER": [{"status": "online", "results": ["93.184.216.119"], "success": "ok"}]}
 
     """
 
@@ -35,7 +39,7 @@ class TrackMyDNS:
         except:
             raise ConnErr("Unable to connect to {0}".format(memcache))
 
-    def query(self, domain, record_type, nameserver=None):
+    def query(self, domain, record_type, nameserver, fmt=None):
         """
         This function will query a domain against the users specified nameserver
         for a user defined resource record. The resource records support
@@ -49,14 +53,31 @@ class TrackMyDNS:
         - TXT	(Text)
 
         """
-       
+        
         if self.mc.get(domain + "-" + record_type):
             if nameserver not in self.mc.get(domain + "-" + record_type)[domain][record_type]:
                 self._query_nameserver(domain, record_type, nameserver)
         else:
             self._query_nameserver(domain, record_type, nameserver)
+        
+        query_results = self.mc.get(domain + "-" + record_type)[domain][record_type]
+        
+        # Return the results in JSON format
+        if fmt == "json":
+            status = 'ok'
             
-        return self.mc.get(domain + "-" + record_type)[domain][record_type]
+            # Check to see if we have an IP address otherwise
+            # set the image to failed
+            for i in query_results.values():
+                if i == '-':
+                    status = 'fail'
+                    break
+
+            return json.dumps({'SERVER': [ {'results': query_results.values()[0],
+                                            'status': 'online',
+                                            'success': status}]})
+        else:
+            return self.mc.get(domain + "-" + record_type)[domain][record_type]
 
     def _query_nameserver(self, domain, record_type, nameserver):
         """
@@ -108,11 +129,11 @@ class TrackMyDNS:
 
 if __name__ == '__main__':
     DOMAIN = "example.com"
-    RecordType = 'CNAME'
+    RecordType = 'A'
 
     myDNS = TrackMyDNS('172.16.105.141')
 
     print myDNS.query(DOMAIN, RecordType, '62.181.119.131')
-    print myDNS.query(DOMAIN, RecordType, '8.8.8.8')
+    print myDNS.query(DOMAIN, RecordType, '8.8.8.8', fmt="json")
 
-    print myDNS.dump_cache(DOMAIN, RecordType)
+    #print myDNS.dump_cache(DOMAIN, RecordType)
