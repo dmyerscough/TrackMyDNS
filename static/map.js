@@ -143,7 +143,7 @@ $(function()
 
 				$.ajax({
 					type: "POST",
-					url: "/static/servers.json",
+					url: "/query/" + dataString,
 					dataType: "json",
 					//data: dataString,
 					//cache: false,

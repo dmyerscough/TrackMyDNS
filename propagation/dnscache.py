@@ -136,4 +136,4 @@ if __name__ == '__main__':
     print myDNS.query(DOMAIN, RecordType, '62.181.119.131')
     print myDNS.query(DOMAIN, RecordType, '8.8.8.8', fmt="json")
 
-    #print myDNS.dump_cache(DOMAIN, RecordType)
+    print myDNS.dump_cache(DOMAIN, RecordType)
