@@ -29,10 +29,11 @@ $(function() {
 				  	$(".spin").show();
 				},
 				
-				error: function(x,t,e) {
-					if(t==="timeout") {
+				error: function(jqXHR, exception) {
+					if(jqXHR.status==400 || exception==="timeout") {
 						if (!$($checks[i]).hasClass("ok")){
 							
+							$($('span[class="spin"]')[i]).text("");
 							$($checks[i]).addClass("fail").show("slow");
 						}
 					}
