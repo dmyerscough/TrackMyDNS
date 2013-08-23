@@ -121,7 +121,7 @@ function initialize() {
           }
       google.maps.event.addDomListener(window, 'load', initialize);
       
-function updateMap(data) {
+function updateMap(data, serverId) {
 	 $.each(data.SERVER, function(j, server){
 		console.log("updateMap: " + server.city);
 		if (server.status=='online') {
@@ -130,7 +130,7 @@ function updateMap(data) {
 		var newMarkers = new google.maps.Marker({
 			icon: '/static/img/online.png',
 			map: map,
-			position: new google.maps.LatLng(server.location[0], server.location[1])
+			position: new google.maps.LatLng(markers.servers[serverId].location[0], markers.servers[serverId].location[1])
 		});
 		newMarkers.setMap(map);
 		}

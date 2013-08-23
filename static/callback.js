@@ -86,7 +86,7 @@ $(function() {
 						}		
 						$($('span[class="spin"]')[serverId]).text("");
 						marker.icon = server.status;	
-						updateMap(data);
+						updateMap(data, serverId);
 					})//end .each	
 	            }
 	        })

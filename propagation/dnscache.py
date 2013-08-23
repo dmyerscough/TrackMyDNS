@@ -21,13 +21,13 @@ class TrackMyDNS:
     >>> MyDNS = TrackMyDNS('172.16.105.141')
     >>> MyDNS.query('example.com', 'A', '8.8.8.8')
     {'8.8.8.8': ['93.184.216.119']}
-    
+
     >>> MyDNS.query('example.com', 'A', '8.8.4.4')
     {'8.8.4.4': ['93.184.216.119']}
 
     >>> MyDNS.dump_cache('example.com', 'A')
     {'example.com': {'A': {'8.8.8.8': ['93.184.216.119']}}}
-    
+
     >>> MyDNS.query(DOMAIN, RecordType, '62.181.119.131', fmt='json')
     {"SERVER": [{"status": "online", "results": ["93.184.216.119"], "success": "ok"}]}
 
@@ -53,19 +53,19 @@ class TrackMyDNS:
         - TXT	(Text)
 
         """
-        
+
         if self.mc.get(domain + "-" + record_type):
             if nameserver not in self.mc.get(domain + "-" + record_type)[domain][record_type]:
                 self._query_nameserver(domain, record_type, nameserver)
         else:
             self._query_nameserver(domain, record_type, nameserver)
-        
+
         query_results = self.mc.get(domain + "-" + record_type)[domain][record_type]
-        
+
         # Return the results in JSON format
         if fmt == "json":
             status = 'ok'
-            
+
             # Check to see if we have an IP address otherwise
             # set the image to failed
             for i in query_results.values():
@@ -73,9 +73,9 @@ class TrackMyDNS:
                     status = 'fail'
                     break
 
-            return json.dumps({'SERVER': [ {'results': query_results.values()[0],
-                                            'status': 'online',
-                                            'success': status}]})
+            return json.dumps({'SERVER': [{'results': query_results.values()[0],
+                                           'status': 'online',
+                                           'success': status}]})
         else:
             return self.mc.get(domain + "-" + record_type)[domain][record_type]
 
