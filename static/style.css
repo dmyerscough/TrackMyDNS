@@ -11,7 +11,7 @@
     }
 	
 	footer {
-		background: url(img/plaid-bg.gif);
+		background: url(/static/img/plaid-bg.gif);
 		height: 200px;
 		border-top: 5px solid #1f1f1f;
 	}
@@ -198,6 +198,21 @@
 	
 	.span4 .pending {
 		background: url(/static/img/pending.png) center right no-repeat;
+	}
+	
+	.span4 .ip {
+		float: right;
+		margin-right: 50px;
+	}
+	
+	.ip .align {
+		margin-left: 12px;
+	}
+	
+	.ip ul li img {
+		width: 8px;
+		height: 8px;
+		cursor:hand;
 	}
 	
 	ul li img {

@@ -7,7 +7,7 @@ var markers = {
 	{
 		'status':'/static/img/offline.png',
 		'city': 'Sydney, Australia',
-		'location': [-33.86, 151.13]
+		'location': [-33.52, 151.13]
 	},
 	{
 		'status':'/static/img/offline.png',
@@ -26,86 +26,75 @@ var markers = {
 	},
 	{
 		'status':'/static/img/offline.png',
-		'city': 'London, England, UK',
-		'location': [51.51, -0.11]
+		'city': 'London, United Kingdom',
+		'location': [51.501904, -0.082397]
 	},
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Paris, France',
-                'location': [48.85, 2.35]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Munich, Germany',
-                'location': [48.13, 11.57]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Rome, Italy',
-                'location': [41.89, 12.48]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Tokyo, Japan',
-                'location': [35.68, 139.69]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Kuala Lumpur, Malaysia',
-                'location': [3.13, 101.68]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Aukland, New Zealand',
-                'location': [-36.84, 174.76]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Mosco, Russia',
-                'location': [55.75, 37.61]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Cape Town, South Africa',
-                'location': [-33.92, 18.42]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Stockholm, Sweden',
-                'location': [59.32, 18.06]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Istanbul, Turkey',
-                'location': [41.00, 28.97]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Herndon, VA, USA',
-                'location': [38.96, -77.38]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Mount View, CA, USA',
-                'location': [37.38, -122.03]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'New York, NY, USA',
-                'location': [40.40, -73.56]
-        },
-        {
-                'status':'/static/img/offline.png',
-                'city': 'Seattle, WA, USA',
-                'location': [47.37, -122.2]
-        },
-
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Paris, France',
+		'location': [48.85, 2.35]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Berlin, Germany',
+		'location': [52.51, 13.40]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Milan, Italy',
+		'location': [45.46, 9.18]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Tokyo, Japan',
+		'location': [35.69, 139.69]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Kuala Lumpur, Malaysia',
+		'location': [3.139, 101.68]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Auckland, New Zealand',
+		'location': [-36.85, 174.76]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Moscow, Russia',
+		'location': [55.75, 37.62]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Cape Town, South Africa',
+		'location': [-33.92, 18.42]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Stockholm, Sweden',
+		'location': [59.33, 18.06]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Istanbul, Turkey',
+		'location': [41.00, 28.98]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'Seattle, WA, USA',
+		'location': [47.37, -122.2]
+	},
+	{
+		'status':'/static/img/offline.png',
+		'city': 'New York, NY, USA',
+		'location': [40.40, -73.56]
+	},
 	
 	]
 };
 
 function initialize() {
-      	    	  
+      	  var markerArr = [];
           var mapOptions = {
                     zoom: 2,
                     center: new google.maps.LatLng(18,20),
@@ -128,64 +117,24 @@ function initialize() {
 	                    map: map
 	                });
           }
-          
+         
           }
       google.maps.event.addDomListener(window, 'load', initialize);
       
-$(function() 
-		{
-			console.log("in function");
-			$("#track").click(function() 
-			{
-				var domain = $("#inputIcon").val();
-				var dataString = 'domain='+ domain;
-				
-
-				$.ajax({
-					type: "POST",
-					url: "/query/" + dataString,
-					dataType: "json",
-					//data: dataString,
-					//cache: false,
-					beforeSend: function(xhr){
-					    if (xhr.overrideMimeType)
-					    {
-					      xhr.overrideMimeType("application/json");
-					    }
-						$checks = $("#flags li");
-						$.each ($checks, function(i) {
-						  	$($checks[i]).removeClass("pending");
-						  	$($checks[i]).addClass("spin");
-						  	$(".spin").show();
-						})
-					},
-					
-					success: function(data) {
-						$.each(data.servers, function(j, server){
-							if (server.status=='img/online.png') {
-								$($checks[j]).addClass("ok").show("slow");
-							}
-							else {
-								$($checks[j]).addClass("fail").show("slow");
-							}
-							$($('span[class="spin"]')[j]).text("");
-							marker.icon = server.status;	
-							$('#map-canvas').show(marker.icon);
-						})
-										
-					}
-				});
-				return false;
-					
-			});
-
-			/**If enter key is pressed, call the button click method**/
-			$("#inputIcon").keypress(function(e){
-				if(e.which==13){
-					$("#track").click();
-					return false;
-				}
-			});
-	}
-	);
+function updateMap(data) {
+	 $.each(data.SERVER, function(j, server){
+		console.log("updateMap: " + server.city);
+		if (server.status=='online') {
+			marker.setMap(null);
+		
+		var newMarkers = new google.maps.Marker({
+			icon: '/static/img/online.png',
+			map: map,
+			position: new google.maps.LatLng(server.location[0], server.location[1])
+		});
+		newMarkers.setMap(map);
+		}
+		
+	 });
+}
 
