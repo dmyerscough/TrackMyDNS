@@ -105,7 +105,7 @@ class TrackMyDNS:
             if answer.rrset.ttl > mc_ttl:
                 mc_ttl = answer.rrset.ttl
 
-        except (dns.resolver.NoNameservers, dns.resolver.NoAnswer):
+        except (dns.resolver.NoNameservers, dns.resolver.NoAnswer, dns.resolver.NXDOMAIN):
             if responses.get(domain):
                 responses[domain][record_type][nameserver] = "-"
             else:
