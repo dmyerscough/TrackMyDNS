@@ -7,14 +7,14 @@ $(function() {
 	
 	$('#track').click(function() {
 	
-		$checks = $("#flags li");
+		$checks = $("#flags > li");
 		$ip = $("#flags li .ip");
 		
 		var domain = $("#inputIcon").val();
 
-		$.each($checks, function(i) {
-	   
-	   var serverId = $checks[i].id;
+		$("#flags > li").each(function(i) {
+		
+	   	var serverId = $checks[i].id;
 	        $.ajax({
 	            type: "GET",
 				url: "/query/" + serverId + "/" +  $("select").val() + "/" + domain ,
@@ -39,9 +39,9 @@ $(function() {
 					}
 				},
 				
-	            success: function(data) {          	
+	            success: function(data) {      	
 	                $.each(data.SERVER, function(j, server){
-	         
+
 						var html = '';
 						if (server.status=='online') {
 							
@@ -69,7 +69,7 @@ $(function() {
 								
 								//Toggle lists
 								$List = $(".ip ul li");
-								for (var i=0; i < $List.length; i++) {
+								for (var k=0; k < $List.length; k++) {
 									$($List).click(function(e) {											
 										$target = $(e.target);
 										var el = $target.parent().nextAll();
