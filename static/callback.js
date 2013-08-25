@@ -10,13 +10,26 @@ $(function() {
 		$checks = $("#flags > li");
 		$ip = $("#flags li .ip");
 		
+		//Handle empty string
+		if($("input").val()=="") { return false; }		
+
+		//Re-initialize
+		if ($checks.hasClass("ok") || $checks.hasClass("fail")) {
+			$ip.text("");
+			$checks.removeClass("ok");
+			$checks.removeClass("fail");
+			$($('span[class="spin"]')).html('<i class="icon-spinner icon-spin icon-large">');
+			$checks.addClass("spin");
+			$(".spin").show();
+		}
 		var domain = $("#inputIcon").val();
 
 		$("#flags > li").each(function(i) {
-		
-	   	var serverId = $checks[i].id;
-	        $.ajax({
-	            type: "GET",
+			
+			
+	   		var serverId = $checks[i].id;
+	        	$.ajax({
+	            		type: "GET",
 				url: "/query/" + serverId + "/" +  $("select").val() + "/" + domain ,
 				dataType: "json",
 				beforeSend: function(xhr){
@@ -25,8 +38,8 @@ $(function() {
 					      xhr.overrideMimeType("application/json");
 					    }			 
 				  	$($checks[i]).removeClass("pending");
-				  	$($checks[i]).addClass("spin");
-				  	$(".spin").show();
+				  	$($checks).addClass("spin");
+					$(".spin").show();
 				},
 				
 				error: function(jqXHR, exception) {
@@ -97,7 +110,7 @@ $(function() {
 	
 	/**If enter key is pressed, call the button click method**/
 	$("#inputIcon").keypress(function(e){
-		if(e.which==13){
+		if($("input").val() !="" && e.which==13){
 			$("#track").click();
 			return false;
 		}
