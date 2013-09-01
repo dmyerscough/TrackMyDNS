@@ -75,10 +75,7 @@ class TrackMyDNS:
                     status = 'fail'
                     break
 
-            IPs = [(IP(ip).int(), ip) for ip in query_results.values()[0]]
-            IPs.sort()
-
-            return json.dumps({'SERVER': [{'results': [ip[1] for ip in IPs],
+            return json.dumps({'SERVER': [{'results': query_results.values()[0],
                                            'status': 'online',
                                            'success': status}]})
         else:

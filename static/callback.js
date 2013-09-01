@@ -106,6 +106,18 @@ $(function() {
 	        })
 
 	 });//end .each
+
+	//Display Toggle button
+	 	$("#show").show();
+	 	$("#hide").show();
+	 	
+	 	$("#show").click(function() {
+	 		$(".ip ul > li").show("slow");
+	 	});
+	 	
+	 	$("#hide").click(function() {
+	 		$(".ip > ul li.align").hide("slow");
+	 	});
 	});//end click()
 	
 	/**If enter key is pressed, call the button click method**/
