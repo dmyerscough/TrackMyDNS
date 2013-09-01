@@ -4,6 +4,8 @@ import dns.resolver
 import pylibmc
 import json
 
+from IPy import IP
+
 __author__ = 'Damian Myerscough'
 __email__ = 'Damian.Myerscough@gmail.com'
 
@@ -73,7 +75,10 @@ class TrackMyDNS:
                     status = 'fail'
                     break
 
-            return json.dumps({'SERVER': [{'results': query_results.values()[0],
+            IPs = [(IP(ip).int(), ip) for ip in query_results.values()[0]]
+            IPs.sort()
+
+            return json.dumps({'SERVER': [{'results': [ip[1] for ip in IPs],
                                            'status': 'online',
                                            'success': status}]})
         else:
